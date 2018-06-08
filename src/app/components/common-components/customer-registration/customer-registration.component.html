@@ -1,0 +1,68 @@
+<div class="container">
+  <ngx-flash-messages></ngx-flash-messages>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <script src="register.component.ts"></script>
+      <br>
+      <form (submit)="onRegisterSubmit()" class="form-horizontal form-style">
+        <span class="heading" style="color: #686868" i18n="@@customerRegistrationTitle">Customer registration</span>
+        <div class="form-group">
+
+          <input type="text" [(ngModel)]="name" name="name" class="form-control"
+                 i18n-placeholder="@@customerNamePlaceholder" placeholder="Name">
+          <span *ngIf="validation.name.errorMessage" [innerText]="validation.name.errorMessage" class="invalid"></span>
+          <br *ngIf="!validation.name.errorMessage" />
+        </div>
+
+
+        <div class="form-group">
+          <input type="text" [(ngModel)]="username" name="username" class="form-control"
+                 i18n-placeholder="@@customerUsernamePlaceholder" placeholder="Username (will be used while login)">
+          <span *ngIf="validation.username.errorMessage" [innerText]="validation.username.errorMessage" class="invalid"></span>
+          <br *ngIf="!validation.username.errorMessage" />
+        </div>
+
+
+        <div class="form-group">
+          <input type="text" [(ngModel)]="email" name="email" class="form-control"
+                 i18n-placeholder="@@customerEmailPlaceholder" placeholder="E-mail">
+          <span *ngIf="validation.email.errorMessage" [innerText]="validation.email.errorMessage" class="invalid"></span>
+          <br *ngIf="!validation.email.errorMessage" />
+        </div>
+
+
+        <div class="form-group">
+          <input type="text" [(ngModel)]="age" name="age" class="form-control"
+                 i18n-placeholder="@@customerAgePlaceholder" placeholder="Age">
+          <span *ngIf="validation.age.errorMessage" [innerText]="validation.age.errorMessage" class="invalid"></span>
+          <br *ngIf="!validation.age.errorMessage" />
+        </div>
+
+
+        <div class="form-group">
+          <input type="text" [(ngModel)]="password" name="password" class="form-control"
+                 i18n-placeholder="@@customerPasswordPlaceholder" placeholder="Password">
+          <span *ngIf="validation.password.errorMessage" [innerText]="validation.password.errorMessage" class="invalid"></span>
+          <br *ngIf="!validation.password.errorMessage" />
+        </div>
+
+
+        <div class="form-group">
+          <button type="submit" style="text-align: center; float:none" class="btn btn-primary center-block"
+                  i18n="@@customerRegisterButton">Register
+          </button>
+        </div>
+
+
+        <a class="navbar-brand" [routerLink]="['/consultantRegistration']"
+           i18n="@@customerConsultantQuestion">Are you a consultant?</a>
+        <a class="navbar-brand" [routerLink]="['/companyRegistration']"
+           i18n="@@customerCompanyQuestion">Are you company manager?</a>
+        <a class="navbar-brand" [routerLink]="['/login']"
+           i18n="@@customerLoginQuestion">Already have an account?</a>
+      </form>
+    </div>
+  </div>
+</div>
+<br><br><br>

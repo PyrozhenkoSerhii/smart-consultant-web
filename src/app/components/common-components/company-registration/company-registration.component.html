@@ -1,0 +1,67 @@
+<div class="container">
+  <ngx-flash-messages></ngx-flash-messages>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <script src="register.component.ts"></script>
+      <br>
+      <form (submit)="onRegisterSubmit()" class="form-horizontal form-style">
+        <span class="heading" style="color: #686868" i18n="@@companyRegistrationTitle">Company registration</span>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="title" name="title" class="form-control"
+                 i18n-placeholder="@@companyTitlePlaceholder" placeholder="Company title">
+          <span *ngIf="validation.title.errorMessage" [innerText]="validation.title.errorMessage" class="invalid"></span>
+          <br *ngIf="!validation.title.errorMessage" />
+        </div>
+
+
+        <div class="form-group">
+          <input type="password" [(ngModel)]="key" name="key" class="form-control"
+                 i18n-placeholder="@@companyKeyPlaceholder" placeholder="Key to authenticate">
+          <span *ngIf="validation.key.errorMessage" [innerText]="validation.key.errorMessage" class="invalid"></span>
+          <br *ngIf="!validation.key.errorMessage" />
+        </div>
+
+
+        <div class="form-group">
+          <input type="text" [(ngModel)]="phone" name="phone" class="form-control"
+                 i18n-placeholder="@@companyPhonePlaceholder" placeholder="Phone">
+          <span *ngIf="validation.phone.errorMessage" [innerText]="validation.phone.errorMessage" class="invalid"></span>
+          <br *ngIf="!validation.phone.errorMessage" />
+        </div>
+
+
+        <div class="form-group">
+          <input type="text" [(ngModel)]="email" name="email" class="form-control"
+                 i18n-placeholder="@@companyEmailPlaceholder" placeholder="Email">
+          <span *ngIf="validation.email.errorMessage" [innerText]="validation.email.errorMessage" class="invalid"></span>
+          <br *ngIf="!validation.email.errorMessage" />
+        </div>
+
+
+        <div class="form-group">
+          <input type="text" [(ngModel)]="certificateRequirements" name="certificateRequirements" class="form-control"
+                 i18n-placeholder="@@companyRequiredCertificatePlaceholder" placeholder="Required certificate">
+          <span *ngIf="validation.certificateRequirements.errorMessage" [innerText]="validation.certificateRequirements.errorMessage" class="invalid"></span>
+          <br *ngIf="!validation.certificateRequirements.errorMessage" />
+        </div>
+
+
+        <div class="form-group">
+          <button type="submit" style="text-align: center; float:none" class="btn btn-primary center-block"
+                  i18n="@@companyRegisterButton">Register
+          </button>
+        </div>
+
+
+        <a class="navbar-brand" [routerLink]="['/consultantRegistration']"
+           i18n="@@companyConsultantQuestion">Are you a consultant?</a>
+        <a class="navbar-brand" [routerLink]="['/customerRegistration']"
+           i18n="@@companyCustomerQuestion">Are you customer?</a>
+        <a class="navbar-brand" [routerLink]="['/login']"
+           i18n="@@companyLoginQuestion">Already have an account?</a>
+      </form>
+    </div>
+  </div>
+</div>
+<br><br><br>

@@ -1,0 +1,96 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-1">
+      <div class="backBtnWrapper">
+        <button class="btnBackward" type="button" (click)="backToCatalog()"></button>
+      </div>
+    </div>
+
+    <div class="col-md-10">
+      <script src="creation.component.ts"></script>
+      <br>
+      <form (submit)="onCreateSubmit()" class="form-horizontal form-style">
+        <span class="heading" style="color: #686868" i18n="@@productCreationLabel">Product creation</span>
+        <ngx-flash-messages></ngx-flash-messages>
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" [(ngModel)]="title" name="title" class="form-control"
+                     i18n-placeholder="@@productCreationTitlePlaceholder" placeholder="Product title">
+            </div>
+            <div class="form-group">
+              <select class="form-control" #curCategoty (change)="changeCurrentCategory(curCategoty.value)">
+                <option i18n="@@productCreationCategory">Choose category</option>
+                <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="price" name="price" class="form-control"
+                     i18n-placeholder="@@productCreationPricePlaceholder" placeholder="Price">
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="quantity" name="quantity" class="form-control"
+                     i18n-placeholder="@@productCreationQuantityPlaceholder" placeholder="Quantity">
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="image" name="image" class="form-control"
+                     i18n-placeholder="@@productCreationImagePlaceholder" placeholder="Image URL">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <h4 i18n="@@productCreationSpecification">Specification</h4><br>
+
+            <div class="row">
+              <div class="col-md-5">
+                <div class="form-group-specification-name">
+                  <input type="text" [(ngModel)]="specificationName" name="specificationName" class="form-control"
+                         i18n-placeholder="@@productCreationSpecNamePlaceholder" placeholder="Name">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-group-specification-value">
+                  <input type="text" [(ngModel)]="specificationValue" name="specificationValue" class="form-control"
+                         i18n-placeholder="@@productCreationSpecValuePlaceholder" placeholder="Value">
+                </div>
+              </div>
+              <div class="col-md-2 btnAddCol">
+                <div class="form-group-specification-button">
+                  <button type="button" class="btnAdd" (click)="addSpecification()"></button>
+                </div>
+              </div>
+            </div>
+
+            <br/>
+            <div class="input-group">
+              <h5 i18n="@@productCreationSpecAdded">Added</h5>
+              <span class="input-group-btn">
+                  <button type="button" class="btnClean" (click)="clearSpecification()"></button>
+                </span>
+            </div>
+
+            <div *ngFor="let element of specification">
+              <div class="input-group">
+                <p>{{element.name}}:{{element.value}}</p>
+                <span class="input-group-btn">
+                  <button class="btnDelete" (click)="deleteSpecificationElement(element.name)"></button>
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="form-group">
+          <button type="submit" style="text-align: center; float:none" class="btn btn-primary center-block"
+                  i18n="@@productCreationBtnCreate">
+            Create
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

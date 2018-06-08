@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-grey">
+  <a class="navbar-brand" [routerLink]="['/']">Smart Consultant</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div id="navbarNavDropdown" class="navbar-collapse collapse">
+    <ul class="navbar-nav mr-auto">
+      <li *ngIf="loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
+          class="nav-item">
+        <a class="nav-link" [routerLink]="['/catalog']" i18n="@@linkProducts">Products</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav">
+      <ul *ngIf="isBaseLocale()" class="languagepicker">
+        <li (click)="changeToEnglish()"><img src="../../../assets/images/engFlag.png" style="width: 20px"/>English</li>
+        <li (click)="changeToRussian()"><img src="../../../assets/images/rusFlag.png" style="width: 20px"/>Russian</li>
+        <li (click)="changeToUkrainian()"><img src="../../../assets/images/ukrFlag.png" style="width: 20px"/>Ukrainian</li>
+      </ul>
+      <ul *ngIf="isRussian()" class="languagepicker">
+        <li (click)="changeToRussian()"><img src="../../../assets/images/rusFlag.png" style="width: 20px"/>Русский</li>
+        <li (click)="changeToEnglish()"><img src="../../../assets/images/engFlag.png" style="width: 20px"/>Английский</li>
+        <li (click)="changeToUkrainian()"><img src="../../../assets/images/ukrFlag.png" style="width: 20px"/>Украинский</li>
+      </ul>
+      <ul *ngIf="isUkrainian()" class="languagepicker">
+        <li (click)="changeToUkrainian()"><img src="../../../assets/images/ukrFlag.png" style="width: 20px"/>Українська</li>
+        <li (click)="changeToRussian()"><img src="../../../assets/images/rusFlag.png" style="width: 20px"/>Російська</li>
+        <li (click)="changeToEnglish()"><img src="../../../assets/images/engFlag.png" style="width: 20px"/>Англійська</li>
+      </ul>
+      <li *ngIf="loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" [routerLink]="['/profile']">{{username}}<span class="sr-only">(current)</span></a>
+      </li>
+      <li *ngIf="!loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
+          class="nav-item">
+        <a class="nav-link" [routerLink]="['/customerRegistration']" i18n="@@linkRegister">Register</a>
+      </li>
+      <li *ngIf="!loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
+          class="nav-item">
+        <a class="nav-link" [routerLink]="['/login']" i18n="@@linkLogin">Login</a>
+      </li>
+      <li *ngIf="loggedIn()" class="nav-item">
+        <a class="nav-link" (click)="onLogoutClick()" href="#" i18n="@@linkLogout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+

@@ -1,0 +1,97 @@
+.categoryWrapper {
+  margin: 20px 0 20px 0;
+}
+
+.titleBtn {
+  background: #dfd8e5;
+  width: 270px;
+  border: 1px solid transparent;
+  font-size: 25px;
+  font-weight: inherit;
+}
+
+.categoryBtn {
+  background-color: #fefdff;
+  width: 270px;
+  border: 1px solid transparent;
+  font-size: 22px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.categoryBtn:hover {
+  background-color: #d4e4ff;
+  width: 270px;
+  border: 1px solid #95b3ff;
+  font-size: 22px;
+  text-align: left;
+  font-family: "Calibri Light";
+  cursor: pointer;
+}
+
+.inputCompany {
+  background-color: white;
+  height: 30px;
+  width: 240px;
+  font-family: "Calibri Light";
+  font-size: 22px;
+  border: 1px solid transparent;
+}
+
+.updateBtn {
+  background-image: url(../../../../assets/images/update.png);
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background-size: 100%;
+  background-size: 30px auto;
+  background-repeat: no-repeat;
+  border: 1px solid transparent;
+}
+
+.productWrapper {
+  vertical-align: top;
+  border: 1px solid #cacaca;
+  background: #f8f1ff;
+  margin: 20px 10px 20px 10px;
+  padding: 10px;
+  position: static;
+  display: inline-block;
+  border-radius: 15px;
+  width: 30%;
+  min-height: 200px;
+}
+
+.productImage {
+  background-repeat: no-repeat;
+  width: 100%;
+  height: auto;
+  max-width: 200px;
+  height: 200px;
+}
+
+.btnForward {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  background-size: 100%;
+  background-size: 30px auto;
+  background-repeat: no-repeat;
+  background-image: url(../../../../assets/images/forward.png);
+  margin-left: 65%;
+}
+
+.btnDelete {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  background-size: 100%;
+  background-size: 32px auto;
+  background-repeat: no-repeat;
+  background-image: url(../../../../assets/images/delete.png);
+}

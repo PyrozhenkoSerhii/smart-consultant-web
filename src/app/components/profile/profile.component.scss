@@ -1,0 +1,156 @@
+.profileWrapper {
+  background: #f8f1ff;
+  margin: 30px 30px 0 30px;
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid #cacaca;
+  font-style: italic;
+}
+
+.requestWrapper {
+  background-color: #f3ecf4;
+  margin: 5px;
+  padding: 5px 20px 5px 20px;
+  border-radius: 15px;
+  border: 2px solid #d1d1d1;
+}
+
+.profileButton {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  background-size: 100%;
+  background-size: 30px auto;
+  background-repeat: no-repeat;
+}
+
+.editButton {
+  background-image: url(../../../assets/images/edit.png);
+}
+
+.applyButton {
+  background-image: url(../../../assets/images/apply.png);
+}
+
+.deleteButton {
+  background-image: url(../../../assets/images/delete.png);
+}
+
+.addButton {
+  background-image: url(../../../assets/images/add.png);
+}
+
+.messageButton {
+  background-image: url(../../../assets/images/messages.png);
+}
+
+.rightButton {
+  margin-left: 70%;
+}
+
+.hireButton {
+  background-image: url(../../../assets/images/hire.png);
+}
+
+.refuseButton {
+  background-image: url(../../../assets/images/delete.png);
+}
+
+.attribute {
+  color: #010206;
+  border: 1px solid transparent;
+  background: transparent;
+  font-style: italic;
+  font-size: 1.3em;
+  width: 100%;
+}
+
+.attributeEditor {
+  color: #102da3;
+  border: 1px solid #888ffd;
+  background: transparent;
+  font-style: italic;
+  font-size: 1.3em;
+  font-family: Arial;
+  width: 100%;
+}
+
+.attrName {
+  color: #1f1f1f;
+  border: 1px solid transparent;
+  background: transparent;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.3em;
+}
+
+.imgEditViewMode {
+  color: #102da3;
+  border: 1px solid #89fd56;
+  background: transparent;
+  visibility: hidden;
+  font-style: italic;
+  font-size: 1.3em;
+  width: 100%;
+}
+
+.imgEditChangeMode {
+  color: #102da3;
+  border: 1px solid #888ffd;
+  visibility: visible;
+  background: transparent;
+  font-style: italic;
+  font-size: 1.3em;
+  width: 100%;
+}
+
+.attributeCompany {
+  color: #102da3;
+  border: 1px solid transparent;
+  background: transparent;
+  font-style: italic;
+  font-size: 1.3em;
+  width: 100%;
+  display: inline-block;
+}
+
+.hiddenBtn {
+  visibility: hidden;
+}
+
+.visibleBtn {
+  visibility: visible;
+}
+
+.addCompanyBtn {
+  background-image: url(../../../assets/images/add.png);
+}
+
+.removeCompanyBtn {
+  background-image: url(../../../assets/images/delete.png);
+}
+
+.forwardBtn {
+  background-image: url(../../../assets/images/forward.png);
+  margin: 5px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  background-size: 100%;
+  background-size: 30px auto;
+  background-repeat: no-repeat;
+}
+
+.goToInput {
+  color: #1f1f1f;
+  width: 80%;
+  border: 1px solid transparent;
+  background: transparent;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.3em;
+}
+

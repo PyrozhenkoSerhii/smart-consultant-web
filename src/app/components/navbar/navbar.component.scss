@@ -1,0 +1,62 @@
+.bg-grey {
+  background-color: rgba(151, 158, 161, 0.73);
+}
+
+* {
+  font-family: Calibri;
+}
+
+body {
+  background-color: #333;
+}
+
+.languagepicker {
+  background-color: transparent;
+  display: inline-block;
+  padding: 0;
+  height: 40px;
+  overflow: hidden;
+  transition: all .3s ease;
+  margin: 0 0 0 0;
+  vertical-align: top;
+  float: left;
+  cursor: pointer;
+  color: white;
+}
+
+.languagepicker:hover {
+  height: 121px;
+}
+
+.languagepicker a{
+  color: #000;
+  text-decoration: none;
+}
+
+.languagepicker li {
+  display: block;
+  padding: 0px 10px;
+  line-height: 40px;
+  // border-top: 1px solid #EEE;
+}
+
+.languagepicker li:hover{
+  background-color: #EEE;
+}
+
+.languagepicker a:first-child li {
+  border: none;
+  background: #FFF !important;
+}
+
+.languagepicker li img {
+  margin-right: 10px;
+}
+
+.roundborders {
+  border-radius: 15px;
+}
+
+.large:hover {
+  height: 245px;
+}

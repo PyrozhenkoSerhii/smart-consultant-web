@@ -1,0 +1,87 @@
+.wrapper {
+  border: 2px solid #cacaca;
+  position: relative;
+  margin: 0 0 0 0;
+  width: 100%;
+  min-height: 300px;
+  display: inline-block;
+  background: #f8f1ff;
+  border-radius: 5px;
+}
+
+.message {
+  padding: 10px 30px 3px 30px ;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.ownMessage {
+  margin-left: 20%;
+  background: #c0bfea;
+}
+
+.othersMessage {
+  margin-right: 20%;
+  background: #daeaff;
+}
+
+.systemMessage {
+  padding: 3px 3px 3px 3px ;
+  text-align: center;
+  margin: 3px 10% 3px 10%;
+  border-radius: 10px;
+  font-size: 12px;
+  font-family: Calibri;
+  background: rgba(155,153,113,0.34);
+}
+
+.profileWrapper {
+  border-radius: 5px;
+  margin: 10px 0 10px 0;
+  padding: 10px;
+  border: 2px solid #cacaca;
+  background: #e4ddea;
+  height: 70px;
+  color: black;
+  font-family: Calibri;
+  font-style: italic;
+  width: 100%;
+}
+
+.profileButton {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  background-size: 100%;
+  background-size: 30px auto;
+  background-repeat: no-repeat;
+}
+
+.btnCopy {
+  margin-top: 5px;
+  background-image: url(../../../../assets/images/copy.png);
+}
+
+
+.productWrapper {
+  border: 2px solid #cacaca;
+  background: #f8f1ff;
+  margin: 10px 0 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  min-height: 426px;
+}
+
+.productImage {
+  background-repeat: no-repeat;
+  width: 100%;
+  height: auto;
+  max-width: 200px;
+}
+
+.inputMessage {
+  border: 2px solid #cacaca;
+  border-radius: 5px;
+}

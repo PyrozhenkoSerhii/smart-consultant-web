@@ -1,0 +1,15 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" i18n="@@orderModalTitle">The order was created</h4>
+  </div>
+  <div class="modal-body">
+    <p i18n="@@orderModalContent">We will call you back soon and update the affirm the order.</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-success" (click)="c('Close click'); close()"
+            i18n="@@orderModalBtnNav">Go to home page
+    </button>
+  </div>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)" i18n="@@orderModalBtnOrder">Order</button>

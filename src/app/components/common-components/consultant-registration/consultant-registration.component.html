@@ -1,0 +1,121 @@
+<div class="container">
+  <ngx-flash-messages></ngx-flash-messages>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <script src="register.component.ts"></script>
+      <br>
+      <form (submit)="onRegisterSubmit()" class="form-horizontal form-style">
+        <span class="heading " style="color: #686868"
+              i18n="@@consultantRegistrationTitle">Consultant registration</span>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="name" name="name" class="form-control"
+                 i18n-placeholder="@@consultantNamePlaceholder" placeholder="Name">
+          <span *ngIf="validation.name.errorMessage" [innerText]="validation.name.errorMessage" class="invalid"></span>
+          <br *ngIf="!validation.name.errorMessage" />
+        </div>
+
+
+        <div class="form-group">
+          <input type="text" [(ngModel)]="username" name="username" class="form-control"
+                 i18n-placeholder="@@consultantUsernamePlaceholder" placeholder="Username (will be used while login)">
+          <span *ngIf="validation.username.errorMessage" [innerText]="validation.username.errorMessage" class="invalid"></span>
+          <br *ngIf="!validation.username.errorMessage" />
+        </div>
+
+
+        <div class="form-group">
+          <input type="text" [(ngModel)]="email" name="email" class="form-control"
+                 i18n-placeholder="@@consultantEmailPlaceholder" placeholder="E-mail">
+          <span *ngIf="validation.email.errorMessage" [innerText]="validation.email.errorMessage" class="invalid"></span>
+          <br *ngIf="!validation.email.errorMessage" />
+        </div>
+
+
+        <div class="form-group">
+          <input type="text" [(ngModel)]="languages" name="languages" class="form-control"
+                 i18n-placeholder="@@consultantLanguagePlaceholder" placeholder="What languages do you now or prefer?">
+          <span *ngIf="validation.languages.errorMessage" [innerText]="validation.languages.errorMessage" class="invalid"></span>
+          <br *ngIf="!validation.languages.errorMessage" />
+        </div>
+
+
+        <div class="row">
+          <div class="col-sm-7">
+            <div class="form-group-inline-left">
+              <input type="text" [(ngModel)]="certificate" name="certificate" class="form-control"
+                     i18n-placeholder="@@consultantCertificatePlaceholder" placeholder="Certificates (with serial number)">
+              <span *ngIf="validation.certificate.errorMessage" [innerText]="validation.certificate.errorMessage" class="invalid"></span>
+              <br *ngIf="!validation.certificate.errorMessage" />
+            </div>
+          </div>
+
+
+          <div class="col-sm-5">
+            <div class="form-group-inline-right">
+              <input type="text" [(ngModel)]="age" name="age" class="form-control"
+                     i18n-placeholder="@@consultantAgePlaceholder" placeholder="Age">
+              <span *ngIf="validation.age.errorMessage" [innerText]="validation.age.errorMessage" class="invalid"></span>
+              <br *ngIf="!validation.age.errorMessage" />
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-sm-7">
+            <div class="form-group-inline-left">
+              <input type="text" [(ngModel)]="card" name="card" class="form-control"
+                     i18n-placeholder="@@consultantCardPlaceholder" placeholder="Card">
+              <br />
+            </div>
+          </div>
+
+
+          <div class="col-sm-5">
+            <div class="form-group-inline-right">
+              <input type="text" [(ngModel)]="phone" name="phone" class="form-control"
+                     i18n-placeholder="@@consultantPhonePlaceholder" placeholder="Phone">
+              <span *ngIf="validation.phone.errorMessage" [innerText]="validation.phone.errorMessage" class="invalid"></span>
+              <br *ngIf="!validation.phone.errorMessage" />
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <select class="form-control" #curCategoty (change)="changeCurrentCategory(curCategoty.value)">
+            <option i18n="@@consultantCategory">Choose preferable category</option>
+            <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+          </select>
+          <span *ngIf="validation.age.errorMessage" [innerText]="validation.age.errorMessage" class="invalid"></span>
+          <br *ngIf="!validation.age.errorMessage" />
+        </div>
+
+
+        <div class="form-group">
+          <input type="password" [(ngModel)]="password" name="password" class="form-control"
+                 i18n-placeholder="@@consultantPasswordPlaceholder" placeholder="Password">
+          <span *ngIf="validation.password.errorMessage" [innerText]="validation.password.errorMessage" class="invalid"></span>
+          <br *ngIf="!validation.password.errorMessage" />
+        </div>
+
+
+        <div class="form-group">
+          <button type="submit" style="text-align: center; float:none" class="btn btn-primary center-block"
+                  i18n="@@consultantRegisterButton" >Register</button>
+        </div>
+
+
+        <a class="navbar-brand" [routerLink]="['/customerRegistration']"
+           i18n="@@consultantCustomerQuestion">Are you a customer?</a>
+        <a class="navbar-brand" [routerLink]="['/companyRegistration']"
+           i18n="@@consultantCompanyQuestion">Are you company manager?</a>
+        <a class="navbar-brand" [routerLink]="['/login']"
+           i18n="@@consultantLoginQuestion">Already have an account?</a>
+      </form>
+    </div>
+  </div>
+</div>
+<br><br><br>

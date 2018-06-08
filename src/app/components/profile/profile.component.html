@@ -1,0 +1,292 @@
+<div *ngIf="user">
+  <div class="container">
+    <div class="profileWrapper">
+      <h2 style="text-align: center">
+        <ng-container i18n="@@userGreetings">Hello,</ng-container>
+        {{user.username === undefined ? user.title : user.username}}
+      </h2>
+      <hr>
+      <ngx-flash-messages></ngx-flash-messages>
+
+      <div *ngIf="type === 'customer'">
+        <div class="row">
+          <div class="col-md-3">
+            <input [(ngModel)]="profileImg" class="{{disabledEdit === true ? 'imgEditViewMode' : 'imgEditChangeMode'}}"
+                   [disabled]="disabledEdit" i18n-placeholder="@@customerImagePlaceholder" placeholder="New image url">
+            <img src={{user.profileImg}} style="width: 100%;">
+            <div class="row">
+              <div class="col-md-6">
+                <button class="{{disabledEdit === true ? 'profileButton editButton' : 'profileButton applyButton'}}"
+                        (click)="changeMode()"></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-9">
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-3">
+                <input class="attrName" disabled i18n-value="@@customerNameValue" value="Name:">
+                <input class="attrName" disabled i18n-value="@@customerUsernameValue" value="Username:">
+                <input class="attrName" disabled i18n-value="@@customerEmailValue" value="Email:">
+                <input class="attrName" disabled i18n-value="@@customerAgeValue" value="Age:">
+              </div>
+              <div class="col-md-6">
+                <input class="attribute" disabled value="{{user.name}}">
+                <input class="attribute" disabled value="{{user.username}}">
+                <input class="{{attrClass}}" [(ngModel)]="email" [disabled]="disabledEdit">
+                <input class="{{attrClass}}" [(ngModel)]="age" [disabled]="disabledEdit">
+              </div>
+            </div>
+
+            <hr>
+            <h5 style="text-align: center" i18n="@@customerPurchases">Last purchases:</h5>
+
+            <div *ngFor="let purchase of user.purchases">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="requestWrapper">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <p>
+                          <ng-container i18n="@@purchaseProduct"><b>Product:</b> </ng-container>
+                          {{purchase.product}}
+                        </p>
+                      </div>
+                      <div class="col-md-4">
+                        <p>
+                          <ng-container i18n="@@purchaseConsultant"><b>Consultant:</b> </ng-container>
+                          {{purchase.consultant}}
+                        </p>
+                      </div>
+                      <div class="col-md-4">
+                        <p>
+                          <ng-container i18n="@@purchaseDate"><b>Date:</b> </ng-container>
+                          {{getDate(purchase.date)}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="type === 'consultant'">
+
+        <div class="row">
+          <div class="col-md-3">
+            <input [(ngModel)]="profileImg" class="{{disabledEdit === true ? 'imgEditViewMode' : 'imgEditChangeMode'}}"
+                   [disabled]="disabledEdit" i18n-placeholder="@@consultantImagePlaceholder"
+                   placeholder="New image url">
+            <img src={{user.profileImg}} style="width: 100%;">
+            <div class="row">
+              <div class="col-md-6">
+                <button class="{{disabledEdit === true ? 'profileButton editButton' : 'profileButton applyButton'}}"
+                        (click)="changeMode()"></button>
+              </div>
+              <div class="col-md-6">
+                <button class="profileButton rightButton messageButton" (click)="showChat()"></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-9">
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-3">
+                <input class="attrName" disabled i18n-value="@@consultantnameValue" value="Name:">
+                <input class="attrName" disabled i18n-value="@@consultantUsernameValue" value="Username:">
+                <input class="attrName" disabled i18n-value="@@consultantEmailValue" value="Email:">
+                <input class="attrName" disabled i18n-value="@@consultantAgeValue" value="Age:">
+                <input class="attrName" disabled i18n-value="@@consultantPhoneValue" value="Phone:">
+                <input class="attrName" disabled i18n-value="@@consultantLanguagesValue" value="Languages:">
+                <input class="attrName" disabled i18n-value="@@consultantCardValue" value="Card:">
+                <input class="attrName" disabled i18n-value="@@consultantRateValue" value="Rate:">
+                <input class="attrName" disabled i18n-value="@@consultantCategoryValue" value="Category:">
+                <input class="attrName" disabled i18n-value="@@consultantCertificateValue" value="Certificate:">
+                <input class="attrName" disabled i18n-value="@@consultantCompanyValue" value="Company:">
+              </div>
+              <div class="col-md-6">
+                <input class="attribute" disabled value="{{user.name}}">
+                <input class="attribute" disabled value="{{user.username}}">
+                <input class="{{attrClass}}" [(ngModel)]="email" [disabled]="disabledEdit">
+                <input class="{{attrClass}}" [(ngModel)]="age" [disabled]="disabledEdit">
+                <input class="{{attrClass}}" [(ngModel)]="phone" [disabled]="disabledEdit">
+                <input class="attribute" disabled value="{{user.languages}}">
+                <input class="{{attrClass}}" [(ngModel)]="card" [disabled]="disabledEdit">
+                <input class="attribute" disabled value="{{user.rate}}">
+                <input class="{{attrClass}}" [(ngModel)]="category" [disabled]="disabledEdit">
+                <input class="{{attrClass}}" [(ngModel)]="certificate" [disabled]="disabledEdit">
+                <input class="attribute" disabled [(ngModel)]="currentCompany">
+                <input
+                  class="{{attrClass}} {{disabledEdit === true || user.company !== null ? 'hiddenBtn' : 'visibleBtn'}}"
+                  [(ngModel)]="company" [disabled]="disabledEdit"
+                  placeholder="Enter the title of company">
+                <button class="profileButton {{user.company === null ? 'addCompanyBtn' : 'removeCompanyBtn'}}
+                                {{disabledEdit === true  ? 'hiddenBtn' : 'visibleBtn'}}"
+                        (click)="changeCompany()">
+                </button>
+              </div>
+
+              <div class="col-md-2">
+                <h5 i18n="@@consultantActive">Active</h5>
+                <ui-switch [checked]="user.available" (change)="changeAvailability($event)"></ui-switch>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+        <h4 style="text-align: center" i18n="@@disposalsConsultant">Last disposals</h4>
+
+        <div *ngFor="let disposal of user.disposals">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="requestWrapper">
+                <div class="row">
+                  <div class="col-md-4">
+                    <p>
+                      <ng-container i18n="@@disposalProduct"><b>Product:</b> </ng-container>
+                      {{disposal.product}}
+                    </p>
+                  </div>
+                  <div class="col-md-4">
+                    <p>
+                      <ng-container i18n="@@disposalCustomer"><b>Customer:</b>  </ng-container>
+                      {{disposal.customer}}
+                    </p>
+                  </div>
+                  <div class="col-md-4">
+                    <p>
+                      <ng-container i18n="@@disposalDate"><b>Date:</b> </ng-container>
+                      {{getDate(disposal.date)}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div *ngIf="type === 'company'">
+        <div class="row">
+          <div class="col-md-3">
+            <input [(ngModel)]="profileImg" class="{{disabledEdit === true ? 'imgEditViewMode' : 'imgEditChangeMode'}}"
+                   [disabled]="disabledEdit" i18n-placeholder="@@companyImagePlaceholder" placeholder="New image url">
+            <img src={{user.profileImg}} style="width: 100%;">
+            <div class="row">
+              <div class="col-md-6">
+                <button class="{{disabledEdit === true ? 'profileButton editButton' : 'profileButton applyButton'}}"
+                        (click)="changeMode()"></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-9">
+            <div class="row">
+              <div class="col-md-3">
+                <input class="attrName" disabled i18n-value="@@companyTitleValue" value="Title:">
+                <input class="attrName" disabled i18n-value="@@companyEmailValue" value="Email:">
+                <input class="attrName" disabled i18n-value="@@companyPhoneValue" value="Phone:">
+                <input class="attrName" disabled i18n-value="@@companyRequirementsValue" value="Requirements:">
+              </div>
+              <div class="col-md-5">
+                <input class="attribute" disabled value="{{user.title}}">
+                <input class="{{attrClass}}" [(ngModel)]="email" [disabled]="disabledEdit">
+                <input class="{{attrClass}}" [(ngModel)]="phone" [disabled]="disabledEdit">
+                <input class="{{attrClass}}" [(ngModel)]="requirements" [disabled]="disabledEdit">
+              </div>
+              <div class="col-md-4">
+                <div class="input-group">
+                  <input class="goToInput" disabled i18n-value="@@goToProductValue" value="Go to products">
+                  <span class="input-group-btn">
+                    <button class="forwardBtn" (click)="productsComponent()"></button>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+            <h5 style="text-align: center" i18n="@@consultantRequests">Consultant request:</h5>
+
+            <div *ngFor="let request of consultantsRequests">
+              <div class="requestWrapper">
+                <div class="row">
+                  <div class="col-md-11">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <p>
+                          <ng-container i18n="@@requestName"><b>Name:</b>  </ng-container>
+                          {{request.consultant.name}}
+                        </p>
+                      </div>
+                      <div class="col-md-7">
+                        <p>
+                          <ng-container i18n="@@requestCertificate"><b>Certificate:</b>  </ng-container>
+                          {{request.consultant.certificate}}
+                        </p>
+                      </div>
+                      <div class="col-md-2">
+                        <p>
+                          <ng-container i18n="@@requestAge"><b>Age:</b>  </ng-container>
+                          {{request.consultant.age}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <button class="profileButton hireButton"
+                            (click)="hireConsultant(request.consultant.username)"></button>
+                    <br>
+                    <button class="profileButton refuseButton"
+                            (click)="refuseConsultant(request.consultant.username)"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+            <h5 style="text-align: center" i18n="@@workingConsultants">Working consultants:</h5>
+
+            <div *ngFor="let consultant of user.consultants">
+              <div class="requestWrapper">
+                <div class="row">
+                  <div class="col-md-11">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <p>
+                          <ng-container i18n="@@workingConsultantName"><b>Name:</b>  </ng-container>
+                          {{consultant.consultant}}
+                        </p>
+                      </div>
+                      <div class="col-md-6">
+                        <p>
+                          <ng-container i18n="@@workingConsultantSince"><b>Working since:</b>  </ng-container>
+                          {{getDate(consultant.date)}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <button class="profileButton refuseButton"
+                            (click)="dismissConsultant(consultant.consultant)"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<br />
+

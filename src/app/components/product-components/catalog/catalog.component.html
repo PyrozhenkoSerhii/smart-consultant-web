@@ -1,0 +1,61 @@
+<ngx-flash-messages></ngx-flash-messages>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="categoryWrapper">
+        <input type="button" class="titleBtn" i18n-value="@@categoriesValue"  value="Categories" disabled>
+        <input id="All" type="button" class="categoryBtn" (click)="changeCategory(null)"
+               i18n-value="@@catalogAllValue" value="All">
+        <input id="TV" type="button" class="categoryBtn" (click)="changeCategory($event)"
+               i18n-value="@@catalogTVValue" value="TV">
+        <input id="PC" type="button" class="categoryBtn" (click)="changeCategory($event)"
+               i18n-value="@@catalogPCValue" value="Personal computers">
+        <input id="Monitor" type="button" class="categoryBtn" (click)="changeCategory($event)"
+               i18n-value="@@catalogMonitorsValue" value="Monitors">
+        <input id="Component" type="button" class="categoryBtn" (click)="changeCategory($event)"
+               i18n-value="@@catalogComponentsValue" value="PC components">
+        <input id="Laptop" type="button" class="categoryBtn" (click)="changeCategory($event)"
+               i18n-value="@@catalogLaptopsValue" value="Laptops">
+        <input id="Smartphone" type="button" class="categoryBtn" (click)="changeCategory($event)"
+               i18n-value="@@catalogSmartphonesValue" value="Smartphones">
+      </div>
+
+      <div class="categoryWrapper">
+        <input type="button" class="titleBtn"
+               i18n-value="@@catalogFindByCompany" value="Find by company" disabled>
+        <div class="input-group">
+          <input class="inputCompany" i18n-placeholder="@@catalogCompanyTitlePlaceholder"  placeholder="Company title"
+                 [(ngModel)]="companySort">
+          <span class="input-group-btn">
+            <button class="updateBtn" (click)="getByCompany()"></button>
+          </span>
+        </div>
+      </div>
+
+      <div *ngIf="userType === 'company'" class="categoryWrapper">
+        <input type="button" class="btn btn-lg btn-primary" style="width: 270px"
+               i18n-value="@@catalogCreateProductValue"  value="Create product" (click)="createProduct()">
+      </div>
+
+    </div>
+    <div class="col-md-8">
+
+      <div *ngFor="let product of sortedProducts" class="productWrapper">
+        <img class="productImage" src="{{product.image}}">
+        <h6 align="center">{{product.title}}</h6>
+        <h6 align="center">{{product.price}}$</h6>
+        <div class="row">
+          <div class="col-md-6">
+            <button *ngIf="userType === 'company' && product.company === user.title" class="btnDelete"
+                    (click)="deleteProduct(product)"></button>
+          </div>
+          <div class="col-md-6">
+            <button class="btnForward" (click)="goToProduct(product)"></button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

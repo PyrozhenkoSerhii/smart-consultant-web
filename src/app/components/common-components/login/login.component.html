@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <script src="login.component.ts"></script>
+      <br>
+      <form (submit)="onLoginSubmit()" class="form-horizontal form-style">
+        <span class="heading" style="color: #686868" i18n="@@loginTitle">Login</span>
+        <ngx-flash-messages></ngx-flash-messages>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="username" name="username" class="form-control"
+                 i18n-placeholder="@@loginUsernamePlaceholder" placeholder="Username">
+        </div>
+        <div class="form-group">
+          <input type="password" [(ngModel)]="password" name="password" class="form-control"
+                 i18n-placeholder="@@loginPasswordPlaceholder" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <button type="submit" style="text-align: center; float:none" class="btn btn-primary center-block"
+          i18n="@loginButton">Login</button>
+        </div>
+        <a class="navbar-brand" [routerLink]="['/customerRegistration']"
+           i18n="@@loginQuestion">Don't have an account?</a>
+      </form>
+
+    </div>
+  </div>
+</div>
+<br><br><br>

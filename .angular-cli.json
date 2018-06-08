@@ -6,10 +6,11 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "../Server/public",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "locale"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -21,7 +22,9 @@
       "styles": [
         "styles.scss"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/moment/min/moment.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

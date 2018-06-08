@@ -1,0 +1,44 @@
+<ngx-flash-messages></ngx-flash-messages>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="consultantsWrapper">
+        <h4 style="text-align: center" i18n="@@selectorTitle">Available consultants</h4>
+        <div class="consultant" *ngFor="let consultant of consultants">
+          <div class="row">
+            <div class="col-md-3">
+              <img src={{consultant.profileImg}} style="width: 100%;">
+            </div>
+            <div class="col-md-6">
+              <p>
+                <ng-container i18n="@@selectorUsername">Username: </ng-container>
+                {{consultant.username}}
+              </p>
+              <p>
+                <ng-container i18n="@@selectorLanguages"> Languages: </ng-container>
+                {{consultant.languages}}
+              </p>
+              <p>
+                <ng-container i18n="@@selectorSales"> Sales:  </ng-container>
+                {{consultant.disposals.length}}
+              </p>
+              <ngb-rating [rate]="getRate(consultant)" [readonly]="true">
+                <ng-template let-fill="fill" let-index="index">
+                  <span class="star" [class.filled]="fill === 100" [class.bad]="index < 0">&#9733;</span>
+                </ng-template>
+              </ngb-rating>
+            </div>
+            <div class="col-md-3">
+              <button class="profileButton messageButton" (click)="getConsultation(consultant)"></button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

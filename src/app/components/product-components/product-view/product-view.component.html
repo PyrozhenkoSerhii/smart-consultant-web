@@ -1,0 +1,78 @@
+<div *ngIf="user">
+  <ngx-flash-messages></ngx-flash-messages>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="backBtnWrapper">
+          <button class="btnBackward" type="button" (click)="catalogRouter()"></button>
+        </div>
+      </div>
+      <div class="col-md-8">
+
+
+        <div class="productWrapper">
+          <h2 style="text-align: center">{{product.title}}</h2>
+          <hr>
+          <div class="row">
+            <div class="col-md-3">
+              <input [(ngModel)]="image" class="{{disabledEdit === true ? 'imgEditViewMode' : 'imgEditChangeMode'}}"
+                     [disabled]="disabledEdit" placeholder="New image url">
+              <img src={{product.image}} style="width: 100%;">
+              <div class="row">
+                <div class="col-md-6">
+                  <button *ngIf="type !== 'company'" class="profileButton btnCopy" ngxClipboard [cbContent]="productURL"></button>
+                  <button *ngIf="type === 'company' && product.company === user.title"
+                          class="{{disabledEdit === true ? 'profileButton editButton' : 'profileButton applyButton'}}"
+                          (click)="changeMode()"></button>
+                </div>
+                <div class="col-md-6">
+                  <button *ngIf="type === 'company' && product.company === user.title"
+                          class="profileButton rightButton deleteButton" (click)="deleteProduct()"></button>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-9">
+              <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
+                  <input class="attrName" disabled i18n-value="@@productViewCategoryValue" value="Category:">
+                  <input class="attrName" disabled i18n-value="@@productViewPriceValue" value="Price ($):">
+                  <input class="attrName" disabled i18n-value="@@productViewQuantityValue" value="Quantity:">
+                  <input class="attrName" disabled i18n-value="@@productViewCompanyValue" value="Company:">
+                </div>
+                <div class="col-md-5">
+                  <input class="attribute" disabled value="{{product.category}}">
+                  <input class="{{attrClass}}" [(ngModel)]="price" [disabled]="disabledEdit">
+                  <input class="{{attrClass}}" [(ngModel)]="quantity" [disabled]="disabledEdit">
+                  <input class="attribute" disabled value="{{product.company}}">
+                </div>
+              </div>
+              <hr>
+              <h4 style="text-align: center" i18n="@@productViewSpecification">Specification:</h4>
+              <div *ngFor="let item of product.specification">
+                <input style="text-align: center" class="attribute" disabled value="{{item.name}}: {{item.value}}">
+              </div>
+            </div>
+          </div>
+          <div *ngIf="type === 'customer'">
+            <hr>
+            <div class="row">
+              <div class="col-md-6">
+                <button class="btn btn-lg btn-success" (click)="orderProduct()"
+                        i18n="@@productViewOrderBtn">Order
+                </button>
+              </div>
+              <div class="col-md-6">
+                <button class="btn btn-lg btn-primary float-lg-right" (click)="getConsultation()"
+                        i18n="@@productViewConsultBtn">Get consultation
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+

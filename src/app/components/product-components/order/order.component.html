@@ -1,0 +1,148 @@
+<div class="container">
+  <br/>
+  <div class="orderWrapper">
+    <div class="container">
+      <ngx-flash-messages></ngx-flash-messages>
+      <script src="register.component.ts"></script>
+      <form (submit)="onOrderSubmit()" class="form-horizontal form-style">
+        <span class="heading" style="font-size: 30px;" i18n="@@orderInfoTitle">Order info</span>
+
+        <div *ngIf="consultant !== null" class="row">
+          <div class="col-md-4">
+            <h4 i18n="@@orderCustomerLabel">Customer</h4>
+            <hr/>
+            <p style=" font-style: italic">
+              <ng-container i18n="@@orderCustomerUsername">Username: </ng-container>
+              {{customer.username}}
+            </p>
+            <p style=" font-style: italic">
+              <ng-container i18n="@@orderCustomerEmail">Email:  </ng-container>
+              {{customer.email}}
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h4 i18n="@@orderConsultantLabel">Consultant</h4>
+            <hr/>
+            <p style=" font-style: italic">
+              <ng-container i18n="@@orderConsultantUsername">Username:  </ng-container>
+              {{consultant.username}}
+            </p>
+            <p style=" font-style: italic">
+              <ng-container i18n="@@orderConsultantEmail">Email:  </ng-container>
+              {{consultant.email}}
+            </p>
+            <p style=" font-style: italic">
+              <ng-container i18n="@@orderConsultantPhone">Phone:  </ng-container>
+              {{consultant.phone}}
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h4 i18n="@@orderProductLabel">Product</h4>
+            <hr/>
+            <p style=" font-style: italic">
+              <ng-container i18n="@@orderProductTitle">Title:  </ng-container>
+              {{product.title}}
+            </p>
+            <p style=" font-style: italic">
+              <ng-container i18n="@@orderProductPrice">Price: </ng-container>
+              {{product.price}}
+            </p>
+            <p style=" font-style: italic">
+              <ng-container i18n="@@orderProductCompany">Company: </ng-container>
+              {{product.company}}
+            </p>
+          </div>
+        </div>
+
+        <div *ngIf="consultant === null" class="row">
+          <div class="col-md-6">
+            <h4 i18n="@@orderCustomerLabel">Customer</h4>
+            <hr/>
+            <p style=" font-style: italic">
+              <ng-container i18n="@@orderCustomerUsername">Username: </ng-container>
+              {{customer.username}}
+            </p>
+            <p style=" font-style: italic">
+              <ng-container i18n="@@orderCustomerEmail">Email:  </ng-container>
+              {{customer.email}}
+            </p>
+          </div>
+          <div class="col-md-6">
+            <h4 i18n="@@orderProductLabel">Product</h4>
+            <hr/>
+            <p style=" font-style: italic">
+              <ng-container i18n="@@orderProductTitle">Title:  </ng-container>
+              {{product.title}}
+            </p>
+            <p style=" font-style: italic">
+              <ng-container i18n="@@orderProductPrice">Price: </ng-container>
+              {{product.price}}
+            </p>
+            <p style=" font-style: italic">
+              <ng-container i18n="@@orderProductCompany">Company: </ng-container>
+              {{product.company}}
+            </p>
+          </div>
+        </div>
+
+        <span class="heading" style="font-size: 30px;" i18n="@@orderDeliveryInfoTitle">Delivery info</span>
+        <ngx-flash-messages></ngx-flash-messages>
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <h4 i18n="@@orderContactData">Contact data</h4>
+            <hr/>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="country" name="country" class="form-control"
+                     i18n-placeholder="@@orderContactCountryPlaceholder" placeholder="Country">
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="town" name="town" class="form-control"
+                     i18n-placeholder="@@orderContactTownPlaceholder" placeholder="Town">
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="address" name="address" class="form-control"
+                     i18n-placeholder="@@orderContactAddressPlaceholder" placeholder="Address">
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="phoneNumber" name="phoneNumber" class="form-control"
+                     i18n-placeholder="@@orderContactPhonePlaceholder" placeholder="Contact phone">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <h4 i18n="@@orderTransportationTitle">Transportation</h4>
+            <hr/>
+            <div class="form-group">
+              <select class="form-control" #curDelivery (change)="changeCurrentDelivery(curDelivery.value)">
+                <option [value]="'Courier delivery'" i18n="@@orderTransportationCourier">Courier delivery</option>
+                <option [value]="'Post office delivery'" i18n="@@orderTransportationPostOffice">Post office delivery
+                </option>
+                <option [value]="'Pick up from stock'" i18n="@@orderTransportationPickup">Pick up from stock</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <select class="form-control" #curPayment (change)="changeCurrentPayment(curPayment.value)">
+                <option [value]="'Cash payment'" i18n="@@orderPaymentCash">Cash payment</option>
+                <option [value]="'Online payment'" i18n="@@orderPaymentOnline">Online payment</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="deliveryTime" name="phone" class="form-control" disabled>
+            </div>
+          </div>
+
+        </div>
+        <app-order-modal>
+          <div class="form-group">
+            <button type="submit" style="text-align: center; float:none" class="btn btn-primary center-block"
+                    i18n="@@orderBtn">Order
+            </button>
+          </div>
+        </app-order-modal>
+      </form>
+    </div>
+  </div>
+</div><br/>
+

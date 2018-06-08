@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-3">
+      <div *ngIf="product !== undefined" class="productWrapper">
+        <h4 style="text-align: center;" i18n="@@chatChosenProduct">Chosen product</h4>
+        <hr/>
+        <img class="productImage" src="{{product.image}}">
+        <h6 align="center">{{product.title}}</h6>
+        <h6 align="center">{{product.price}}$</h6>
+        <hr/>
+
+        <div *ngIf="userType === 'customer'" class="row">
+          <div class="col-md-9">
+            <app-chat-rate-modal (click)="EndConsultation()">
+              <button class="btn btn-md btn-primary" (click)="EndConsultation()"
+                      i18n="@@chatConsultantEnding">End Consultation
+              </button>
+            </app-chat-rate-modal>
+          </div>
+          <div class="col-md-3">
+            <button class="profileButton btnCopy" ngxClipboard [cbContent]="productURL"></button>
+          </div>
+        </div>
+
+        <div *ngIf="userType === 'consultant'" class="row" style="margin-left: 20px; padding: 0">
+          <h4 style="text-align: center" i18n="@@productViewSpecification">Specification:</h4><br />
+          <div *ngFor="let spec of product.specification">
+            <p>{{spec.name}}:{{spec.value}}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="col-md-6">
+      <form (submit)="SendMessage()" class="form-horizontal">
+
+        <div class="profileWrapper">
+          <div class="row">
+            <div class="col-md-2">
+              <img src="{{user.profileImg}}" style="height: 50px">
+            </div>
+            <div class="col-md-3">
+              <h3>{{user.username}}</h3>
+            </div>
+            <div class="col-md-5"></div>
+            <div *ngIf="userType === 'consultant'" class="col-md-2">
+              <ui-switch [disabled]="disabledBtn" [checked]="user.available"
+                         (change)="ChangeAvailability($event)"></ui-switch>
+            </div>
+          </div>
+        </div>
+
+
+        <ngx-flash-messages></ngx-flash-messages>
+        <div class="wrapper">
+
+          <div *ngFor="let chat of chatData">
+
+            <div *ngIf="!chat.isSystemMessage">
+              <div class="message {{user.username == chat.user ? 'ownMessage' : 'othersMessage'}}">
+                <div class="row">
+                  <div class="row-md-3">
+                    <img src={{chat.profileImg}} style="width: 50px; margin-right:  20px ;">
+                  </div>
+                  <div class="row-md-8">
+                    <h5>{{chat.user}}{{type === 'consultant' ? '(consultant)' : ''}}</h5>
+                    <p>{{chat.message}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="chat.isSystemMessage && userType === 'consultant'">
+              <div class="systemMessage">
+                {{chat.message}}
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="input-group">
+          <input  type="text" [(ngModel)]="message" name="message" class="form-control inputMessage"
+                  i18n-placeholder="@@chatMessagePlaceholder" placeholder="Message">
+          <span class="input-group-btn">
+               <input type="submit" class="btn btn-primary center-block" i18n-value="@@chatBtnSend" value="Send">
+          </span>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

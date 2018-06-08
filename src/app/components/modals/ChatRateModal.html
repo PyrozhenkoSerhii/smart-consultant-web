@@ -1,0 +1,25 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" i18n="@@chatModalTitle">Whether a consultant was useful?</h4>
+  </div>
+  <div class="modal-body">
+    <h5 i18n="@@chatModalContent">Please, rate a consultant</h5>
+    <ngb-rating [(rate)]="currentRate">
+      <ng-template let-fill="fill" let-index="index">
+        <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-default" (click)="c('Close click');"
+            i18n="@@chatModalBtnSkip">Skip
+    </button>
+    <button type="button" class="btn btn-outline-success" (click)="c('Close click'); rateConsultant()"
+            i18n="@@chatModalRate">Rate
+    </button>
+  </div>
+</ng-template>
+
+<button class="btn btn-md btn-success" (click)="open(content)"
+        i18n="@@chatModalEndConsultation">End a consultation
+</button>
